@@ -4,19 +4,19 @@
 
 <ion-content class="ion-padding">
   <div class="title">
-    <h4>Login</h4>
+    <h3>Login</h3>
     <p>Lets get started</p>
   </div>
-
-  <ion-input placeholder="Username" class="primary-input"></ion-input>
-  <ion-input placeholder="Password" type="password" class="primary-input"></ion-input>
-
+  <form [formGroup]="">
+    <ion-input placeholder="Username" formControlName="userName" class="primary-input"></ion-input>
+    <ion-input placeholder="Password" formControlName="password" type="password" class="primary-input"></ion-input>
+  </form>
   <div class="ion-margin-top ion-text-right forget">
-    <a>Forgot Password?</a>
+    <a (click)="forgotPassword()">Forgot Password?</a>
   </div>
-
+  {{loginForm.valid}}{{loginForm.dirty}}
   <div class="ion-margin-top">
-    <ion-button expand="block" (click)="login()">LOGIN</ion-button>
+    <ion-button expand="block" (click)="login()" [disabled]="!loginForm.valid || !loginForm.dirty">LOGIN</ion-button>
   </div>
 
   <div class="ion-margin-top ion-text-center">
