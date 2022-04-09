@@ -14,7 +14,8 @@
     <span class="err_msg"
       *ngIf="(isFormSubmitted || form.userName.touched)&& ((!(form.userName.errors?.required)) && form.userName.errors?.emailValid)">Enter
       Valid Email *</span>
-    <ion-input placeholder="Password" formControlName="password" type="password" class="primary-input" required>
+    <ion-input clearOnEdit="false" placeholder="Password" formControlName="password" type="password"
+      class="primary-input" required>
     </ion-input>
     <span class="err_msg" *ngIf="(isFormSubmitted || form.password.touched) && form.password.errors?.required">Password
       is required *</span>

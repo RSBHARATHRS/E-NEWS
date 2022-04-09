@@ -5,25 +5,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-card no-margin margin-bottom class="full-width">
+  <!-- <ion-card no-margin margin-bottom class="full-width">
     <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
       <ion-icon name="search" color="primary" item-left></ion-icon>
-      <ion-input></ion-input>
-      <!-- <span>{{ search.name }}</span> -->
-    </ion-item>
+      <ion-input></ion-input> -->
+  <!-- <span>{{ search.name }}</span> -->
+  <!-- </ion-item>
     <ion-item>
       <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
       <ion-datetime class="no-pl" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="search.date">
       </ion-datetime>
     </ion-item>
-  </ion-card>
+  </ion-card> -->
 
-  <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
+  <!-- <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
     <ion-icon name="search"></ion-icon> Search
-  </button>
+  </button> -->
 
   <ng-container *ngFor="let item of [1,2,3,4]">
-    <app-news-feed-tile></app-news-feed-tile>
+    <app-news-feed-tile [newsData]=""></app-news-feed-tile>
   </ng-container>
 
 </ion-content>

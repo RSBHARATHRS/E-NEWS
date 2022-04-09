@@ -22,10 +22,15 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
-  get form() { return this.loginForm.controls; }
+
+  get form() {
+    return this.loginForm.controls;
+  }
+
   forgotPassword() {
 
   }
+
   emailValidation(control: AbstractControl) {
     const regex = new RegExp(/^\s*\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+\s*$/);
     if (regex.test(control.value)) {
@@ -36,9 +41,10 @@ export class LoginPage implements OnInit {
       }
     }
   }
-  async dismiss() {
-    await this.modalCtrl.dismiss();
+  async dismiss(data?: any) {
+    await this.modalCtrl.dismiss({ isLoggedIn: data });
   }
+
   formSubmit() {
     this.isFormSubmitted = true;
     if (this.loginForm.invalid) {
@@ -46,5 +52,7 @@ export class LoginPage implements OnInit {
     } else {
       console.log("form Submitted")
     }
+    this.dismiss(true);
   }
+
 }
