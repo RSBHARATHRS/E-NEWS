@@ -15,7 +15,8 @@ export class HomePage {
     date: new Date().toISOString()
   }
 
-  constructor(public nav: NavController, public popoverCtrl: PopoverController,
+  constructor(public nav: NavController,
+    public popoverCtrl: PopoverController,
     private weatherService: WeatherService) {
   }
 
@@ -31,7 +32,7 @@ export class HomePage {
     // }).catch((err) => {
     //   console.log(err)
     // });
-    console.log(this.weatherService.getWeather('tamilnadu', 'tirunelveli').subscribe());
+    //console.log(this.weatherService.getWeather('tamilnadu', 'tirunelveli').subscribe());
 
   }
 

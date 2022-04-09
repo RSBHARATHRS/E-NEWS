@@ -29,7 +29,8 @@
   <ion-card no-margin margin-bottom class="full-width">
     <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
       <ion-icon name="search" color="primary" item-left></ion-icon>
-      <span>{{ search.name }}</span>
+      <ion-input></ion-input>
+      <!-- <span>{{ search.name }}</span> -->
     </ion-item>
     <ion-item>
       <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
@@ -41,5 +42,21 @@
   <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
     <ion-icon name="search"></ion-icon> Search
   </button>
+
+  <!-- <app-home-tiles></app-home-tiles> -->
+
+  <!-- <mbsc-listview [options]="cycleSettings">
+  <mbsc-listview-item>
+    <mbsc-card class="custom-card">
+        <mbsc-card-header>
+            <mbsc-card-title>Best places to test your survival skills</mbsc-card-title>
+            <mbsc-card-subtitle>A view across the Turnagain Arm on Alaska's Kenai Peninsula.</mbsc-card-subtitle>
+        </mbsc-card-header>
+        <mbsc-card-content>
+            <img draggable="false" src="https://img.mobiscroll.com/demos/card_3.png">
+        </mbsc-card-content>
+    </mbsc-card>
+</mbsc-listview-item>
+</mbsc-listview> -->
 
 </ion-content>
