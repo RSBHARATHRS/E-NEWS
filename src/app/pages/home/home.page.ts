@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
-import { NotificationsPage } from '../common/notifications/notifications';
+//import { NotificationsPage } from '../../common/notifications/notifications';
 
 @Component({
   selector: 'app-home',

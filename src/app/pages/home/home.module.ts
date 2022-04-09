@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { HomeTilesComponent } from '../components/home-tiles/home-tiles.component'
+import { HomeTilesComponent } from '../../components/home-tiles/home-tiles.component'
 
 @NgModule({
   imports: [

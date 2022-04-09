@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { News } from 'src/app/models/news.model';
 
 @Component({
   selector: 'app-news-feed-tile',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NewsFeedTileComponent implements OnInit {
 
-  @Input() newsData: any;
+  @Input() newsData: News;
 
   constructor() { }
 
