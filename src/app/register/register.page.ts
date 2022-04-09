@@ -15,6 +15,10 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+  register() {
+
+  }
+
   async dismiss() {
     return await this.modalCtrl.dismiss();
   }

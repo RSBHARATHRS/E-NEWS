@@ -22,11 +22,19 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
-  },
-  {
+  },  {
     path: 'news-feeds',
-    loadChildren: () => import('./pages/news-feeds/news-feeds.module').then(m => m.NewsFeedsModule)
+    loadChildren: () => import('./pages/news-feeds/news-feeds.module').then( m => m.NewsFeedsPageModule)
   },
+
+  // {
+  //   path: 'news-feeds',
+  //   loadChildren: () => import('./pages/news-feeds/news-feeds.module').then(m => m.NewsFeedsModule)
+  // }
+  // {
+  //   path: 'news-feeds',
+
+  // },
 ];
 
 @NgModule({
