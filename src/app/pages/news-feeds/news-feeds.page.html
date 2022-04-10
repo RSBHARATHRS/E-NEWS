@@ -22,8 +22,8 @@
     <ion-icon name="search"></ion-icon> Search
   </button> -->
 
-  <ng-container *ngFor="let item of [1,2,3,4]">
-    <app-news-feed-tile [newsData]=""></app-news-feed-tile>
+  <ng-container *ngFor="let news of newsArr">
+    <app-news-feed-tile [newsData]="news"></app-news-feed-tile>
   </ng-container>
 
 </ion-content>

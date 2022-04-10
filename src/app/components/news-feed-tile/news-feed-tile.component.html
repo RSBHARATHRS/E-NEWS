@@ -3,33 +3,21 @@
     <!-- Card -->
     <div class="card">
       <div class="card-header">
-        <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
+        <img [src]="newsData.imgUrl" alt="rover" />
       </div>
       <div class="card-body">
-        <span class="tag tag-teal">Technology</span>
-        <h4>
-          Why is the Tesla Cybertruck designed the way it
-          is?
-        </h4>
-        <p>
-          An exploration into the truck's polarising design
-          An exploration into the truck's polarising design
-          An exploration into the truck's polarising design
-          An exploration into the truck's polarising design
-          An exploration into the truck's polarising design
-        </p>
-
+        <span class="tag tag-teal">{{newsData.category}}</span>
+        <h4>{{newsData.heading}}</h4>
+        <p>{{newsData.content}} </p>
         <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+          <a href="javascript:void(0)" [routerLink]="['/news-viewed']" [queryParams]="{newsId:newsData.newsId}"
+            class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read
+            More</a>
           <div class="mdl-layout-spacer"></div>
           <!-- <button class="mdl-button mdl-button--icon mdl-button--colored"><i
               class="material-icons">favorite</i></button>
           <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button> -->
         </div>
-
       </div>
     </div>
-
-
-
   </div>
