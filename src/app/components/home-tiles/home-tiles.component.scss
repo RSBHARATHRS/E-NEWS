@@ -12,35 +12,36 @@
 }
 
 
-.row1-container .box p {
-    color: var(--grayishBlue);
+.box p {
+    color: black;
 }
 
-.row1-container .box {
+.box {
     border-radius: 5px;
     box-shadow: 0px 30px 40px -20px var(--grayishBlue);
     padding: 30px;
     margin: 20px;
+    background-color: white;
 }
 
-.row1-container .box img {
+.box img {
     float: right;
 }
 
 @media (max-width: 450px) {
-    .row1-container .box {
+    .box {
         height: 200px;
     }
 }
 
 @media (max-width: 950px) and (min-width: 450px) {
-    .row1-container .box {
+    .box {
         text-align: center;
         height: 180px;
     }
 }
 
-.row1-container .cyan {
+.cyan {
     border-top: 3px solid var(--cyan);
 }
 
@@ -57,7 +58,7 @@
 }
 
 h2 {
-    color: var(--varyDarkBlue);
+    color: black;
     font-weight: var(--weight3);
 }
 
