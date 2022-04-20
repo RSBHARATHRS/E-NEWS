@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'news-viewed',
     loadChildren: () => import('./pages/news-viewed/news-viewed.module').then( m => m.NewsViewedPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 
 ];
 
