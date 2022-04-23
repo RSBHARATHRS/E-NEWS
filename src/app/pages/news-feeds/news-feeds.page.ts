@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { NotificationsPage } from 'src/app/common/notifications/notifications';
+import { News } from 'src/app/models/news.model';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'app-news-feeds',
@@ -13,10 +16,19 @@ export class NewsFeedsPage implements OnInit {
     name: "Rio de Janeiro, Brazil",
     date: new Date().toISOString()
   }
+
+  news$: Subscription;
+  newsArr: Array<News> = [];
+
   constructor(public nav: NavController,
-    public popoverCtrl: PopoverController) { }
+    public popoverCtrl: PopoverController,
+    private newsService: NewsService) { }
 
   ngOnInit() {
+    this.news$ = this.newsService.getNews().subscribe(res => {
+      console.log(res, "newsArr");
+      this.newsArr = res;
+    });
   }
 
   doSearch() {

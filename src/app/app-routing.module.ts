@@ -26,7 +26,15 @@ const routes: Routes = [
   {
     path: 'news-feeds',
     loadChildren: () => import('./pages/news-feeds/news-feeds.module').then(m => m.NewsFeedsPageModule)
+  },  {
+    path: 'news-viewed',
+    loadChildren: () => import('./pages/news-viewed/news-viewed.module').then( m => m.NewsViewedPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
 ];
 
 @NgModule({

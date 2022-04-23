@@ -7,16 +7,28 @@
     <h3>Login</h3>
     <p>Lets get started</p>
   </div>
-  <form [formGroup]="">
-    <ion-input placeholder="Username" formControlName="userName" class="primary-input"></ion-input>
-    <ion-input placeholder="Password" formControlName="password" type="password" class="primary-input"></ion-input>
+  <form [formGroup]="loginForm">
+    <ion-input placeholder="Email" type="email" formControlName="userName" class="primary-input" required></ion-input>
+    <span class="err_msg" *ngIf="(isFormSubmitted || form.userName.touched)&& form.userName.errors?.required">Email is
+      required *</span>
+    <span class="err_msg"
+      *ngIf="(isFormSubmitted || form.userName.touched)&& ((!(form.userName.errors?.required)) && form.userName.errors?.emailValid)">Enter
+      Valid Email *</span>
+    <ion-input clearOnEdit="false" placeholder="Password" formControlName="password" type="password"
+      class="primary-input" required>
+    </ion-input>
+    <span class="err_msg" *ngIf="(isFormSubmitted || form.password.touched) && form.password.errors?.required">Password
+      is required *</span>
+    <span class="err_msg"
+      *ngIf="(isFormSubmitted || form.password.touched) && (!(form.password.errors?.required)) && form.password.errors?.minlength">Maximun
+      8 char is required *</span>
   </form>
   <div class="ion-margin-top ion-text-right forget">
     <a (click)="forgotPassword()">Forgot Password?</a>
   </div>
-  {{loginForm.valid}}{{loginForm.dirty}}
   <div class="ion-margin-top">
-    <ion-button expand="block" (click)="login()" [disabled]="!loginForm.valid || !loginForm.dirty">LOGIN</ion-button>
+    <!-- <ion-button expand="block" type="submit">LOGIN</ion-button> -->
+    <ion-button type="submit" color="danger" (click)="formSubmit()" expand="block">Login</ion-button>
   </div>
 
   <div class="ion-margin-top ion-text-center">
