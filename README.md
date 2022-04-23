@@ -1,4 +1,4 @@
-# Ionic Login Screen UI
+# E - News
 
 ## [Watch it on YouTube](https://youtu.be/18r03PpxtPk)
 
