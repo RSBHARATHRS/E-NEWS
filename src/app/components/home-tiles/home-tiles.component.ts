@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-tiles',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeTilesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
+  gotoNewsFeeds() {
+    this.router.navigate(['news-feeds']);
+  }
 }

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="cards">
+    <div class="cards__item">
+      <div class="card">
+        <div class="card__image">
+          <img [src]="newsData.imgUrl">
+        </div>
+        <div class="card__content">
+          <div class="card__title">{{newsData.heading}}</div>
+          <p class="card__text">{{newsData.content}} </p>
+          <button class="btn btn--block card__btn">Play Audio</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

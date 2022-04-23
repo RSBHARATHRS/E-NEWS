@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 import { RegisterPage } from '../register/register.page';
@@ -12,6 +13,7 @@ export class WelcomePage implements OnInit {
 
   constructor(
     public modalCtrl: ModalController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,9 @@ export class WelcomePage implements OnInit {
       backdropDismiss: false,
       cssClass: 'login-modal',
     })
-
+    modal.onDidDismiss().then(res => {
+      res?.data?.isLoggedIn ? this.router.navigate(['/home']) : null;
+    })
     return await modal.present();
   }
 
