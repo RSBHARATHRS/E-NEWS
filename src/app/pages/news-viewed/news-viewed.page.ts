@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { Subscription } from 'rxjs';
 import { News } from 'src/app/models/news.model';
 import { NewsService } from 'src/app/services/news.service';
@@ -17,7 +18,8 @@ export class NewsViewedPage implements OnInit, OnDestroy {
   newsData: News;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private newsService: NewsService) {
+    private newsService: NewsService,
+    private tts: TextToSpeech) {
     this.activatedRoute$ = this.activatedRoute.queryParams.subscribe(params => {
       console.log(params, "params");
       this.newsId = params?.newsId;
@@ -30,10 +32,21 @@ export class NewsViewedPage implements OnInit, OnDestroy {
       this.newsData = res;
     })
   }
+  
+  playAudio(text:string){
+    this.tts.speak({
+      text:text,
+      locale:"en-US",
+      rate:1
+    })
+    .then(() => console.log('Success'))
+    .catch((reason: any) => console.log(reason));
+  }
 
   ngOnDestroy(): void {
     this.activatedRoute$ ? this.activatedRoute$.unsubscribe() : null;
     this.news$ ? this.news$.unsubscribe() : null;
   }
+
 
 }

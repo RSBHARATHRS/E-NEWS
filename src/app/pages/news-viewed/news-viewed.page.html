@@ -14,7 +14,7 @@
         <div class="card__content">
           <div class="card__title">{{newsData.heading}}</div>
           <p class="card__text">{{newsData.content}} </p>
-          <button class="btn btn--block card__btn">Play Audio</button>
+          <button class="btn btn--block card__btn" (click)="playAudio(newsData.content)">Play Audio</button>
         </div>
       </div>
     </div>
