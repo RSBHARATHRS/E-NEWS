@@ -3,12 +3,13 @@
     <!-- Card -->
     <div class="card">
       <div class="card-header">
-        <img [src]="newsData.imgUrl" alt="rover" />
+        
+        <img [src]="newsData?.imageUrl" alt="img" />
       </div>
       <div class="card-body">
-        <span class="tag tag-teal">{{newsData.category}}</span>
-        <h4>{{newsData.heading}}</h4>
-        <p>{{newsData.content}} </p>
+        <span class="tag tag-teal">{{newsData?.category?.english}}</span>
+        <h4>{{newsData?.heading?.english}}</h4>
+        <p>{{newsData?.content?.english}} </p>
         <div class="mdl-card__actions mdl-card--border">
           <a href="javascript:void(0)" [routerLink]="['/news-viewed']" [queryParams]="{newsId:newsData.newsId}"
             class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read

@@ -13,6 +13,7 @@ import { NewsViewedPage } from './news-viewed.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    FormsModule,
     NewsViewedPageRoutingModule
   ],
   declarations: [NewsViewedPage]
