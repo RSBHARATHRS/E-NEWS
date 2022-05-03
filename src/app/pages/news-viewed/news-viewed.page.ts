@@ -37,7 +37,7 @@ export class NewsViewedPage implements OnInit, OnDestroy {
     this.tts.speak({
       text:text,
       locale:"en-US",
-      rate:1
+      rate:0.8
     })
     .then(() => console.log('Success'))
     .catch((reason: any) => console.log(reason));
