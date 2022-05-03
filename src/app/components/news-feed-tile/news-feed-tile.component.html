@@ -3,7 +3,6 @@
     <!-- Card -->
     <div class="card">
       <div class="card-header">
-        
         <img [src]="newsData?.imageUrl" alt="img" />
       </div>
       <div class="card-body">
@@ -11,7 +10,7 @@
         <h4>{{newsData?.heading?.english}}</h4>
         <p>{{newsData?.content?.english}} </p>
         <div class="mdl-card__actions mdl-card--border">
-          <a href="javascript:void(0)" [routerLink]="['/news-viewed']" [queryParams]="{newsId:newsData.newsId}"
+          <a href="javascript:void(0)" [routerLink]="['/news-viewed']" [queryParams]="{newsId:newsData?.newsId}"
             class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read
             More</a>
           <div class="mdl-layout-spacer"></div>
