@@ -27,7 +27,7 @@ export class NewsFeedsPage implements OnInit {
   ngOnInit() {
     this.news$ = this.newsService.getNews().subscribe(res => {
       console.log(res, "newsArr");
-      this.newsArr = res;
+      this.newsArr = res?.newsFeeds;
     });
   }
 

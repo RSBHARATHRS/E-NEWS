@@ -41,12 +41,14 @@ img {
     border: 1px solid $gray-light;
     //border-radius: 1rem;
     color: $gray-dark;
-    padding: 0.5rem;
+    padding: 0.2rem;
     text-transform: lowercase;
+    align-self: flex-end;
 }
 
 .btn--block {
     display: block;
+    align-items: center;
     width: 100%;
 }
 
@@ -86,11 +88,14 @@ img {
     }
 }
 
-.card__content {
+.card_content {
     display: flex;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     flex-direction: column;
     padding: 1rem;
+    .card_toggle{
+        margin: 10px;
+    }
 }
 
 .card__image {
@@ -133,4 +138,5 @@ img {
     line-height: 1.5;
     margin-bottom: 1.25rem;
     color: $gray;
+    margin-top: 8px;
 }

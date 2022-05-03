@@ -16,6 +16,7 @@ export class NewsViewedPage implements OnInit, OnDestroy {
   news$: Subscription;
   newsId: any;
   newsData: News;
+  isTamil:boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
     private newsService: NewsService,
@@ -29,14 +30,19 @@ export class NewsViewedPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.news$ = this.newsService.getParticularNews(this.newsId).subscribe(res => {
-      this.newsData = res;
+      this.newsData = res?.news;
     })
   }
+
+  audioSelect(event:any,audioValue:any) {
+    console.log(event);
+    console.log(audioValue);
+  }
   
-  playAudio(text:string){
+  playAudio(text:any,isTam:boolean){
     this.tts.speak({
-      text:text,
-      locale:"en-US",
+      text:this.isTamil? text?.tamil :text?.english,
+      locale: this.isTamil? "ta-IN" : "en-US",
       rate:0.8
     })
     .then(() => console.log('Success'))
