@@ -21,9 +21,11 @@
   <!-- <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
     <ion-icon name="search"></ion-icon> Search
   </button> -->
-
-  <ng-container *ngFor="let news of newsArr">
-    <app-news-feed-tile [newsData]="news"></app-news-feed-tile>
+  <ng-container *ngIf="newsArr && newsArr?.length != 0">
+    <ng-container *ngFor="let news of newsArr">
+      <app-news-feed-tile [newsData]="news"></app-news-feed-tile>
+    </ng-container>
   </ng-container>
+ 
 
 </ion-content>
