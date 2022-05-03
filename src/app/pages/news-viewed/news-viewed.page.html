@@ -8,14 +8,24 @@
   <div class="cards">
     <div class="cards__item">
       <div class="card">
+
         <div class="card__image">
-          <img [src]="newsData.imgUrl">
+          <img [src]="newsData?.imageUrl">
         </div>
-        <div class="card__content">
-          <div class="card__title">{{newsData.heading}}</div>
-          <p class="card__text">{{newsData.content}} </p>
-          <button class="btn btn--block card__btn" (click)="playAudio(newsData.content)">Play Audio</button>
-        </div>
+     
+          <div class="card_toggle">
+            <ion-item class="ion-text-center">
+              <ion-label>English</ion-label>
+              <ion-toggle [(ngModel)]="isTamil" (ionChange)="audioSelect($event,isTamil)"></ion-toggle>
+              <ion-label>Tamil</ion-label>
+            </ion-item>
+          </div>
+          <div class="card_content">
+            <div class="card__title">{{isTamil?  newsData?.heading?.tamil  :  newsData?.heading?.english}}</div>  
+            <p class="card__text">{{isTamil? newsData?.content?.tamil : newsData?.content?.english}} </p>
+            <ion-button color="success" class="btn btn--block card__btn" (click)="playAudio(newsData?.content,isTamil)">Read News</ion-button>
+          </div>
+        
       </div>
     </div>
   </div>
