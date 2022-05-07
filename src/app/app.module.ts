@@ -15,20 +15,19 @@ import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    IonicModule.forRoot(),
-    AppRoutingModule],
-  providers: [
-    TextToSpeech,
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        IonicModule.forRoot(),
+        AppRoutingModule],
+    providers: [
+        TextToSpeech,
+        StatusBar,
+        SplashScreen,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
