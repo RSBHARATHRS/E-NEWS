@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'ionic-login',
+  appName: 'E-News',
   webDir: 'www',
   bundledWebRuntime: false,
   cordova: {

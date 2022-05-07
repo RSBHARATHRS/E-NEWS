@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Fireba }
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { environment } from 'src/environments/environment';
 
@@ -19,7 +18,7 @@ import { environment } from 'src/environments/environment';
     imports: [BrowserModule,
         HttpClientModule,
         ReactiveFormsModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
+       // AngularFireModule.initializeApp(environment.firebaseConfig),
         IonicModule.forRoot(),
         AppRoutingModule],
     providers: [
