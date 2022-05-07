@@ -30,7 +30,8 @@
     <p>By signing up you're agreed to our Terms & Conditions</p>
 
     <div class="ion-margin-top">
-      <ion-button expand="block" type="submit" (click)="register()">SIGN UP</ion-button>
+      {{form.valid}}
+      <ion-button expand="block" type="submit" [disabled]="!signUp?.valid" (click)="register()">SIGN UP</ion-button>
     </div>
 
     <div class="ion-margin-top ion-text-center">

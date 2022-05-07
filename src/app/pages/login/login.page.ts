@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { fireConts } from 'src/app/constants/firebase';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,11 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   isFormSubmitted: boolean = false
-  constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder) { }
+  constructor(public modalCtrl: ModalController, 
+    private formBuilder: FormBuilder,
+    private db: AngularFirestore) {
+  
+   }
 
   ngOnInit() {
     this.login()
@@ -46,13 +52,18 @@ export class LoginPage implements OnInit {
   }
 
   formSubmit() {
-    this.isFormSubmitted = true;
-    if (this.loginForm.invalid) {
-      return false;
-    } else {
-      console.log("form Submitted")
-    }
-    this.dismiss(true);
+    this.db.collection(fireConts.doc).doc(this.loginForm.value.userName).valueChanges().subscribe((res:any)=>{
+      if(res == undefined){
+        console.log("User doesn't exist");
+      } else if(res && res?.pass == this.loginForm.value.password){
+        this.isFormSubmitted = true;
+        this.dismiss(true);
+      }else{
+        console.log("Incorrect Password");
+      }
+    },err=>{
+      console.log(err,"err");
+    })
   }
 
 }

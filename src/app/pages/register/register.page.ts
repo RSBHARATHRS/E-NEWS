@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { fireConts } from "../../constants/firebase"
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,10 @@ export class RegisterPage implements OnInit {
   signUp: FormGroup;
   isFormSubmitted: boolean = false;
   constructor(
-    public modalCtrl: ModalController, private formBuilder: FormBuilder
+    public modalCtrl: ModalController, 
+    private formBuilder: FormBuilder,
+    private db: AngularFirestore,
+    
   ) { }
 
   ngOnInit() {
@@ -30,6 +35,7 @@ export class RegisterPage implements OnInit {
   async dismiss() {
     return await this.modalCtrl.dismiss();
   }
+
   emailValidation(control: AbstractControl) {
     const regex = new RegExp(/^\s*\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+\s*$/);
     if (regex.test(control.value)) {
@@ -40,7 +46,15 @@ export class RegisterPage implements OnInit {
       }
     }
   }
+
   register() {
-    this.isFormSubmitted = true;
+    // this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).valueChanges().subscribe(res=>{
+    //   console.log(res,"db");
+    // });
+    this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).set({"name": this.signUp.value.first_Name,"pass": this.signUp.value.password }).then(res=>{
+      this.isFormSubmitted = true;
+      this.dismiss();
+    })
+    
   }
 }
