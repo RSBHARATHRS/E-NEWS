@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { fireConts } from "../../constants/firebase"
 
 @Component({
@@ -9,15 +10,17 @@ import { fireConts } from "../../constants/firebase"
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage implements OnInit, OnDestroy {
   signUp: FormGroup;
   isFormSubmitted: boolean = false;
+  register$:Subscription;
   constructor(
     public modalCtrl: ModalController, 
     private formBuilder: FormBuilder,
     private db: AngularFirestore,
     
   ) { }
+
 
   ngOnInit() {
     this.signupForm()
@@ -48,13 +51,26 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    // this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).valueChanges().subscribe(res=>{
-    //   console.log(res,"db");
-    // });
-    this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).set({"name": this.signUp.value.first_Name,"pass": this.signUp.value.password }).then(res=>{
-      this.isFormSubmitted = true;
-      this.dismiss();
+    this.register$ = this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).valueChanges().subscribe((res:any)=>{
+      console.log(res,"res");
+      this.register$?.unsubscribe();
+      this.signUp.controls.user_Name.setErrors({alreadyExists:false})
+      if(res == undefined){
+        this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).set({"name": this.signUp.value.first_Name,"pass": this.signUp.value.password }).then(()=>{
+          this.isFormSubmitted = true;
+          this.dismiss();
+        })
+      } else {
+        this.signUp.controls.user_Name.setErrors({alreadyExists:true})
+      }
+    },err=>{
+      console.log(err,"err");
     })
-    
+  
   }
+
+  ngOnDestroy(): void {
+    this.register$?.unsubscribe();
+  }
+
 }

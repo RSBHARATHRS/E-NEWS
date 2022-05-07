@@ -5,14 +5,15 @@
 </ion-header>
 
 <ion-content>
-  <div class="cards">
-    <div class="cards__item">
-      <div class="card">
+  <ng-container *ngIf="newsData;else loader">
+    <div class="cards">
+      <div class="cards__item">
+        <div class="card">
 
-        <div class="card__image">
-          <img [src]="newsData?.imageUrl">
-        </div>
-     
+          <div class="card__image">
+            <img [src]="newsData?.imageUrl">
+          </div>
+
           <div class="card_toggle">
             <ion-item class="ion-text-center">
               <ion-label>English</ion-label>
@@ -21,17 +22,25 @@
             </ion-item>
           </div>
           <div class="card_content">
-            <div class="card__title">{{isTamil?  newsData?.heading?.tamil  :  newsData?.heading?.english}}</div>  
+            <div class="card__title">{{isTamil? newsData?.heading?.tamil : newsData?.heading?.english}}</div>
             <p class="card__text">{{isTamil? newsData?.content?.tamil : newsData?.content?.english}} </p>
             <ng-container *ngIf="!isReading;else stop">
-              <ion-button color="success" class="btn btn--block card__btn" (click)="startReading(newsData?.content,isTamil)">Read News</ion-button>
+              <ion-button color="success" class="btn btn--block card__btn"
+                (click)="startReading(newsData?.content,isTamil)">Read News</ion-button>
             </ng-container>
             <ng-template #stop>
-              <ion-button color="success" class="btn btn--block card__btn" (click)="stopReading()">Stop Reading</ion-button>
+              <ion-button color="Danger" class="btn btn--block card__btn" (click)="stopReading()">Stop Reading
+              </ion-button>
             </ng-template>
           </div>
-        
+
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #loader>
+    <div class="parent">
+      <div class="loader"></div>
+    </div>
+  </ng-template>
 </ion-content>

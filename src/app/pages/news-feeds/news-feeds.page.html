@@ -33,11 +33,16 @@
     </mat-form-field>
   </div> -->
 
-  <ng-container *ngIf="newsArr && newsArr?.length != 0">
+  <ng-container *ngIf="newsArr && newsArr?.length != 0;else loader">
     <ng-container *ngFor="let news of newsArr">
       <app-news-feed-tile [newsData]="news"></app-news-feed-tile>
     </ng-container>
   </ng-container>
+  <ng-template #loader>
+    <div class="parent">
+      <div class="loader"></div>
+    </div>
+  </ng-template>
 
 
 </ion-content>

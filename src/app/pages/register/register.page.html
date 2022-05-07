@@ -8,10 +8,7 @@
     <p>Register with Code Crafts to get started</p>
   </div>
   <form [formGroup]="signUp">
-    <ion-input placeholder="Full Name" formControlName="first_Name" class="primary-input" required></ion-input>
-    <span class="err_msg" *ngIf="(isFormSubmitted || form.first_Name.touched) && form.first_Name.errors?.required">First
-      Name is
-      required *</span>
+    <!-- User Name -->
     <ion-input placeholder="Email" type="email" formControlName="user_Name" class="primary-input" required></ion-input>
     <span class="err_msg" *ngIf="(isFormSubmitted || form.user_Name.touched)&& form.user_Name.errors?.required">Email is
       required
@@ -19,6 +16,16 @@
     <span class="err_msg"
       *ngIf="(isFormSubmitted || form.user_Name.touched)&& ((!(form.user_Name.errors?.required)) && form.user_Name.errors?.emailValid)">Enter
       Valid Email *</span>
+    <span class="err_msg"
+      *ngIf="form?.user_Name?.errors?.alreadyExists">Email ID already exists, Please try different email *</span>
+
+    <!-- First name -->
+    <ion-input placeholder="Full Name" formControlName="first_Name" class="primary-input" required></ion-input>
+    <span class="err_msg" *ngIf="(isFormSubmitted || form.first_Name.touched) && form.first_Name.errors?.required">First
+      Name is
+      required *</span>
+
+    <!-- Password -->
     <ion-input placeholder="password" type="password" formControlName="password" class="primary-input" required>
     </ion-input>
     <span class="err_msg" *ngIf="(isFormSubmitted || form.password.touched)&& form.password.errors?.required">Password

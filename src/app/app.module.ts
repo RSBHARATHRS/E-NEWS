@@ -20,8 +20,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeGuard } from './guards/welcome.guard'
 
+import { LoaderComponent } from './components/loader/loader.component'
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent,LoaderComponent],
     imports: [BrowserModule,
         HttpClientModule,
         ReactiveFormsModule,

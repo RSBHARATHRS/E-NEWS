@@ -1,22 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { fireConts } from 'src/app/constants/firebase';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, OnDestroy {
   loginForm: FormGroup;
-  isFormSubmitted: boolean = false
+  isFormSubmitted: boolean = false;
+
+  login$:Subscription;
+
   constructor(public modalCtrl: ModalController, 
     private formBuilder: FormBuilder,
     private db: AngularFirestore) {
   
    }
+
 
   ngOnInit() {
     this.login()
@@ -52,20 +57,23 @@ export class LoginPage implements OnInit {
   }
 
   formSubmit() {
-    this.db.collection(fireConts.doc).doc(this.loginForm.value.userName).valueChanges().subscribe((res:any)=>{
+    this.login$ = this.db.collection(fireConts.doc).doc(this.loginForm.value.userName).valueChanges().subscribe((res:any)=>{
       if(res == undefined){
         this.loginForm.controls.userName.setErrors({notExists:true})
-        console.log("User doesn't exist");
       } else if(res && res?.pass == this.loginForm.value.password){
         this.isFormSubmitted = true;
         localStorage.setItem("user",JSON.stringify(res))
         this.dismiss(true);
       }else{
-        console.log("Incorrect Password");
+        this.loginForm.controls.password.setErrors({incorrect:true})
       }
     },err=>{
       console.log(err,"err");
     })
+  }
+
+  ngOnDestroy(): void {
+    this.login$?.unsubscribe();
   }
 
 }

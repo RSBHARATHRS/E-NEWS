@@ -21,6 +21,7 @@
       class="primary-input" required> -->
       <ion-input  clearOnEdit="false" placeholder="password" type="password" formControlName="password" class="primary-input" required>
     </ion-input>
+    <span  class="err_msg" *ngIf="form?.password?.errors?.incorrect">Incorrect password *</span>
     <span  class="err_msg" *ngIf="(isFormSubmitted || form.password.touched) && form.password.errors?.required">Password
       is required *</span>
     <span class="err_msg"
@@ -28,7 +29,7 @@
       8 char is required *</span>
   </form>
   <div class="ion-margin-top ion-text-right forget">
-    <a (click)="forgotPassword()">Forgot Password?</a>
+    <!-- <a (click)="forgotPassword()">Forgot Password?</a> -->
   </div>
   <div class="ion-margin-top">
     <!-- <ion-button expand="block" type="submit">LOGIN</ion-button> -->
