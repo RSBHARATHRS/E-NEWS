@@ -17,6 +17,8 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WelcomeGuard } from './guards/welcome.guard'
 
 @NgModule({
     declarations: [AppComponent],
@@ -28,11 +30,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
         AngularFirestoreModule,
         AngularFireDatabaseModule,
         IonicModule.forRoot(),
-        AppRoutingModule],
+        AppRoutingModule,
+        BrowserAnimationsModule],
     providers: [
         TextToSpeech,
         StatusBar,
         SplashScreen,
+        WelcomeGuard,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     ],
     bootstrap: [AppComponent]

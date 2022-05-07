@@ -14,10 +14,14 @@
     <span class="err_msg"
       *ngIf="(isFormSubmitted || form.userName.touched)&& ((!(form.userName.errors?.required)) && form.userName.errors?.emailValid)">Enter
       Valid Email *</span>
-    <ion-input clearOnEdit="false" placeholder="Password" formControlName="password" type="password"
-      class="primary-input" required>
+      <span class="err_msg"
+      *ngIf="form?.userName?.errors?.notExists">User doesn't exist *</span>
+
+    <!-- <ion-input clearOnEdit="false" placeholder="Password" formControlName="password" type="password"
+      class="primary-input" required> -->
+      <ion-input  clearOnEdit="false" placeholder="password" type="password" formControlName="password" class="primary-input" required>
     </ion-input>
-    <span class="err_msg" *ngIf="(isFormSubmitted || form.password.touched) && form.password.errors?.required">Password
+    <span  class="err_msg" *ngIf="(isFormSubmitted || form.password.touched) && form.password.errors?.required">Password
       is required *</span>
     <span class="err_msg"
       *ngIf="(isFormSubmitted || form.password.touched) && (!(form.password.errors?.required)) && form.password.errors?.minlength">Maximun

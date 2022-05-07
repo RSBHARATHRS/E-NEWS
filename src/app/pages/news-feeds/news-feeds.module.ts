@@ -8,13 +8,14 @@ import { NewsFeedsPageRoutingModule } from './news-feeds-routing.module';
 
 import { NewsFeedsPage } from './news-feeds.page';
 import { NewsFeedTileComponent } from '../../components/news-feed-tile/news-feed-tile.component'
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NewsFeedsPageRoutingModule
+    NewsFeedsPageRoutingModule,
+    MatSelectModule
   ],
   declarations: [NewsFeedsPage,
     NewsFeedTileComponent]

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { WelcomeGuard } from './guards/welcome.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule)
+    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule),
+    canActivate:[WelcomeGuard]
   },
   {
     path: 'login',
@@ -26,7 +28,8 @@ const routes: Routes = [
   {
     path: 'news-feeds',
     loadChildren: () => import('./pages/news-feeds/news-feeds.module').then(m => m.NewsFeedsPageModule)
-  },  {
+  },
+  {
     path: 'news-viewed',
     loadChildren: () => import('./pages/news-viewed/news-viewed.module').then( m => m.NewsViewedPageModule)
   },

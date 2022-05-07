@@ -17,6 +17,7 @@ export class NewsViewedPage implements OnInit, OnDestroy {
   newsId: any;
   newsData: News;
   isTamil:boolean;
+  isReading:boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
     private newsService: NewsService,
@@ -39,17 +40,31 @@ export class NewsViewedPage implements OnInit, OnDestroy {
     console.log(audioValue);
   }
   
-  playAudio(text:any,isTam:boolean){
+  startReading(text:any,isTam:boolean){
+    this.isReading = true;
     this.tts.speak({
       text:this.isTamil? text?.tamil :text?.english,
       locale: this.isTamil? "ta-IN" : "en-US",
+      rate:0.85
+    })
+    .then()
+    .catch((reason: any) => console.log(reason));
+  }
+
+  stopReading(){
+    this.tts.speak({
+      text:"",
+      locale: this.isTamil? "ta-IN" : "en-US",
       rate:0.8
     })
-    .then(() => console.log('Success'))
+    .then(() => {
+      this.isReading = false;
+    })
     .catch((reason: any) => console.log(reason));
   }
 
   ngOnDestroy(): void {
+    this.stopReading()
     this.activatedRoute$ ? this.activatedRoute$.unsubscribe() : null;
     this.news$ ? this.news$.unsubscribe() : null;
   }

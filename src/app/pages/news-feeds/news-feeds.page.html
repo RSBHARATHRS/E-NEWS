@@ -21,11 +21,23 @@
   <!-- <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
     <ion-icon name="search"></ion-icon> Search
   </button> -->
+  <!-- <div>
+    <h4>Sort by category</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose an category</mat-label>
+      <mat-select [disabled]="disableSelect.value">
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
   <ng-container *ngIf="newsArr && newsArr?.length != 0">
     <ng-container *ngFor="let news of newsArr">
       <app-news-feed-tile [newsData]="news"></app-news-feed-tile>
     </ng-container>
   </ng-container>
- 
+
 
 </ion-content>

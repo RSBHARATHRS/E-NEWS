@@ -20,6 +20,16 @@ export class NewsFeedsPage implements OnInit {
   news$: Subscription;
   newsArr: Array<News> = [];
 
+  category:Array<any> = [
+    {
+      id:"01",
+      value:""
+    },
+    {
+
+    }
+  ]
+
   constructor(public nav: NavController,
     public popoverCtrl: PopoverController,
     private newsService: NewsService) { }

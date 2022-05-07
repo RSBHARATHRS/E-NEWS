@@ -54,9 +54,11 @@ export class LoginPage implements OnInit {
   formSubmit() {
     this.db.collection(fireConts.doc).doc(this.loginForm.value.userName).valueChanges().subscribe((res:any)=>{
       if(res == undefined){
+        this.loginForm.controls.userName.setErrors({notExists:true})
         console.log("User doesn't exist");
       } else if(res && res?.pass == this.loginForm.value.password){
         this.isFormSubmitted = true;
+        localStorage.setItem("user",JSON.stringify(res))
         this.dismiss(true);
       }else{
         console.log("Incorrect Password");
