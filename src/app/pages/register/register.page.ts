@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit, OnDestroy {
       this.register$?.unsubscribe();
       this.signUp.controls.user_Name.setErrors({alreadyExists:false})
       if(res == undefined){
-        this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).set({"name": this.signUp.value.first_Name,"pass": this.signUp.value.password }).then(()=>{
+        this.db.collection(fireConts.doc).doc(this.signUp.value.user_Name).set({"name": this.signUp.value.first_Name,"pass": this.signUp.value.password, "imgUrl":null, "designation":null }).then(()=>{
           this.isFormSubmitted = true;
           this.dismiss();
         })

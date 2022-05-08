@@ -13,6 +13,7 @@ export class HomeTilesComponent implements OnInit {
   ngOnInit() { }
 
   gotoNewsFeeds() {
-    this.router.navigate(['news-feeds']);
+    window.open("https://tamil.oneindia.com/", "_blank");
+    //this.router.navigate(['news-feeds']);
   }
 }

@@ -62,7 +62,7 @@ export class LoginPage implements OnInit, OnDestroy {
         this.loginForm.controls.userName.setErrors({notExists:true})
       } else if(res && res?.pass == this.loginForm.value.password){
         this.isFormSubmitted = true;
-        localStorage.setItem("user",JSON.stringify(res))
+        localStorage.setItem("user",JSON.stringify({emailId:this.loginForm.value.userName,...res}))
         this.dismiss(true);
       }else{
         this.loginForm.controls.password.setErrors({incorrect:true})

@@ -32,9 +32,23 @@
       </mat-select>
     </mat-form-field>
   </div> -->
+  <ion-list class="filter">
+    <!-- <ion-list-header>
+      <ion-label>
+        Filter By
+      </ion-label>
+    </ion-list-header> -->
+  
+    <ion-item>
+      <ion-label>category</ion-label>
+      <ion-select interface="popover" [(ngModel)]="selectedCate" (ngModelChange)="onCateChange($event)">
+        <ion-select-option *ngFor="let cate of category" [value]="cate?.cate">{{cate?.cate}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  <ng-container *ngIf="newsArr && newsArr?.length != 0;else loader">
-    <ng-container *ngFor="let news of newsArr">
+  <ng-container *ngIf="filteredNewsArr && filteredNewsArr?.length != 0;else loader">
+    <ng-container *ngFor="let news of filteredNewsArr">
       <app-news-feed-tile [newsData]="news"></app-news-feed-tile>
     </ng-container>
   </ng-container>

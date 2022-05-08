@@ -28,7 +28,6 @@ export class NewsViewedPage implements OnInit, OnDestroy {
     })
   }
 
-
   ngOnInit() {
     this.news$ = this.newsService.getParticularNews(this.newsId).subscribe(res => {
       this.newsData = res?.news;
